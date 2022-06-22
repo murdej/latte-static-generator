@@ -1,0 +1,15 @@
+{
+    "name": "murdej/latte-static-generator",
+    "description": "Generates static HTML using LATTE templates.",
+    "type": "project",
+    "require": {
+        "latte/latte": "^3.0",
+        "nette/utils": "^3.2"
+    },
+    "authors": [
+        {
+            "name": "Vit Peprnicek",
+            "email": "vit.peprnicek@nwt.cz"
+        }
+    ]
+}

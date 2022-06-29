@@ -11,13 +11,14 @@
     "require": {
         "latte/latte": "^3.0",
         "nette/utils": "^3.2",
-        "nette/neon": "^3.3",
-        "toolkit/pflag": "^2.0"
+        "nette/neon": "^3.3"
     },
+    "bin": [ "latte-static-gen.php" ],
     "authors": [
         {
             "name": "Vit Peprnicek",
             "email": "vit.peprnicek@gmail.com"
         }
-    ]
+    ],
+    "license": "GPL-2.0-only"
 }

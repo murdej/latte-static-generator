@@ -2,14 +2,22 @@
     "name": "murdej/latte-static-generator",
     "description": "Generates static HTML using LATTE templates.",
     "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Murdej\\LatteStaticGenerator\\": "App/",
+            "Murdej\\LatteStaticGenerator\\Plugins\\": "Plugins/"
+        }
+    },
     "require": {
         "latte/latte": "^3.0",
-        "nette/utils": "^3.2"
+        "nette/utils": "^3.2",
+        "nette/neon": "^3.3",
+        "toolkit/pflag": "^2.0"
     },
     "authors": [
         {
             "name": "Vit Peprnicek",
-            "email": "vit.peprnicek@nwt.cz"
+            "email": "vit.peprnicek@gmail.com"
         }
     ]
 }

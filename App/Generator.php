@@ -2,6 +2,8 @@
 
 namespace Murdej\LatteStaticGenerator;
 
+use Murdej\LatteStaticGenerator\Plugins\IPlugin;
+use Murdej\LatteStaticGenerator\Plugins\PluginEvent;
 use Nette\Utils\Strings;
 
 class Generator 
@@ -17,17 +19,37 @@ class Generator
 		$this->latte->setTempDirectory($this->tempDir);
 	}
 	
-	public function processTask(TaskConfig $taskConfig)
+	public function processTask(TaskConfig $taskConfig, IPlugin $plugin)
 	{
-		$output = $this->latte->renderToString($taskConfig->sourceFile, $taskConfig->data);
-		$destinationFile = Strings::endsWith($taskConfig->destination, '/')
-			? $taskConfig->destination . basename($taskConfig->sourceFile, '.latte') . '.html'
+		// $this->latte->
+		// print_r($taskConfig);
+		$pluginEvent = new PluginEvent();
+		$pluginEvent->task = $taskConfig;
+		if ($plugin) $plugin->handlePre($pluginEvent);
+		// print_r($taskConfig);
+		$pluginEvent->output = $this->latte->renderToString(
+			$taskConfig->sourceFile,
+			array_merge(
+				$taskConfig->data,
+				['task' => $taskConfig]
+			) 
+		);
+		if ($plugin) $plugin->handlePost($pluginEvent);
+		$destination = Strings::endsWith($taskConfig->destination, '/')
+			? $taskConfig->destination .= $taskConfig->sourceNameNoExt . '.html'
 			: $taskConfig->destination;
-		file_put_contents($destinationFile, $output);
+
+		echo "DEST: $destination\n";
+		file_put_contents($destination, $pluginEvent->output);
 	}
 
-	public function process($tasks)
+	public function processProject(Project $project)
 	{
-		
+		foreach($project->tasks as $task) {
+			$nTask = clone $project->defaults;
+			$nTask->update($task);
+	
+			$this->processTask($nTask, $project->plugins);
+		}
 	}
 }

@@ -1,0 +1,18 @@
+defaults:
+	destination: "../dist/"
+	data: 
+		menu: 
+			- { "name": "Homepage", "path": "homepage" }
+			- { "name": "Docs", "path": "docs" }
+			- { "name": "Examples", "path": "examples" }
+
+plugins:
+	- Murdej\LatteStaticGenerator\Plugins\MarkdownPandoc("_markdown.latte")
+
+- homepage.latte
+- docs.md
+- 
+	sourceFile: examples.latte
+	data:
+		foo: 789 ewwwq
+- https://raw.githubusercontent.com/murdej/MuWidget2/master/docs/index.md

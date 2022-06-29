@@ -7,6 +7,13 @@
 	<title>{block title}{/block}</title>
 </head>
 <body>
+	<nav>
+		<ul>
+			<li n:foreach="$menu as $menuItem" n:class="$task->sourceNameNoExt == $menuItem['path'] ? selected">
+				<a href="/{$menuItem['path']}.html">{$menuItem['name']}</a>
+			</li>
+		</ul>
+	</nav>
 	{block content}{/block}
 </body>
 </html>

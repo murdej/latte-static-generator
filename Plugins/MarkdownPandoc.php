@@ -8,6 +8,7 @@ class MarkdownPandoc extends BasePlugin
 		public string $template = __DIR__ . '/MarkdownPandoc.template.latte',
 		public string $variable = 'content',
 		public string $cmd = 'pandoc',
+		public bool $createToc = true,
 	)
 	{ }
 
@@ -17,10 +18,11 @@ class MarkdownPandoc extends BasePlugin
 
 			// $descriptorspec = ;
 			// var_dump([$this->cmd, $descriptorspec, $pipes]);
-			 
+			$cmdParams = [];
+			if ($this->createToc) $cmdParams[] = '--toc';
 			$pipes = [];
 			$process = proc_open(
-				$this->cmd, 
+				$this->cmd . ' ' . implode(' ', $cmdParams),
 				[
 					0 => [ "pipe", "r" ],  // stdin is a pipe that the child will read from
 					1 => [ "pipe", "w" ],  // stdout is a pipe that the child will write to

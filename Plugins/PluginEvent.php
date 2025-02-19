@@ -7,4 +7,6 @@ use Murdej\LatteStaticGenerator\TaskConfig;
 class PluginEvent
 {
 	public TaskConfig $task;
+
+	public null|string $output = null;
 }

@@ -14,5 +14,5 @@ class Project
 	/** @var TaskConfig[] */
 	public array $tasks = [];
 	
-	public IPlugin $plugins;
+	public IPlugin|null $plugins = null;
 }

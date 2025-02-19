@@ -42,6 +42,7 @@ class TaskConfig
 		else
 		{
 			foreach($src as $k => $v) {
+				if ($k === 'data') $v = $v ?: [];
 				$task->$k = $v;
 			}
 		}

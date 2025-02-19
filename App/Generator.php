@@ -19,7 +19,7 @@ class Generator
 		$this->latte->setTempDirectory($this->tempDir);
 	}
 	
-	public function processTask(TaskConfig $taskConfig, IPlugin $plugin)
+	public function processTask(TaskConfig $taskConfig, null|IPlugin $plugin)
 	{
 		// $this->latte->
 		// print_r($taskConfig);

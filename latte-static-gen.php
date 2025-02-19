@@ -4,7 +4,7 @@
 use Murdej\LatteStaticGenerator\Generator;
 use Murdej\LatteStaticGenerator\ProjectParser;
 
-function showError(string $message, Exception|null $ex = null, bool $fullError = false)
+function showError(string $message, Throwable|null $ex = null, bool $fullError = false)
 {
 	echo $message . "\n";
 	if ($ex) echo ($fullError ? $ex->__toString() : $ex->getMessage()) . "\n";

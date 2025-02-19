@@ -15,5 +15,5 @@ plugins:
 	sourceFile: examples.latte
 	data:
 		foo: 789 ewwwq
-- https://raw.githubusercontent.com/murdej/MuWidget2/master/docs/index.md
+- https://raw.githubusercontent.com/murdej/MuWidget2/master/docs/documentation.md
 
